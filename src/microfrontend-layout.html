@@ -1,0 +1,59 @@
+<single-spa-router mode="hash">
+  <!--<redirect from="/" to="/login"></redirect>-->
+  <style>
+    .app-page {
+      position: fixed;
+      top: 0px;
+      left: 0px;
+      right: 0px;
+      bottom: 0px;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .header, header {
+      width: 100%;
+    }
+  </style>
+  <div class="app-page">
+
+    <route default>
+      <redirect from="/" to="/#/login"></redirect>
+      <div
+              class="login"
+              style="width: 100%; max-width: 330px; padding: 15px; margin: auto"
+      >
+        <application name="@app/login"></application>
+      </div>
+    </route>
+
+    <route path="dashboard">
+      <application name="@app/dashboard"></application>
+    </route>
+
+    <route path="web">
+
+      <div class="header">
+        <application name="@app/header"></application>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row">
+          <application name="@app/navbar"></application>
+
+          <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+            <route default>
+              <application name="@app/vue3-app"></application>
+            </route>
+
+            <route path="vue2">
+              <application name="@app/vue2-app"></application>
+            </route>
+          </main>
+        </div>
+      </div>
+    </route>
+  </div>
+</single-spa-router>
